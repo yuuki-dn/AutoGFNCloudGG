@@ -1,0 +1,47 @@
+plugins {
+    id 'application'
+    // id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
+
+group = 'dev.hachikuu.autogfncloudgg'
+version = '0.1-dev'
+
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit for testing.
+    testImplementation 'junit:junit:4.13.2'
+
+    // This dependency is used by the application.
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'ch.qos.logback:logback-classic:1.2.6'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.18.1'
+    implementation 'org.jsoup:jsoup:1.17.2'
+    implementation 'com.alibaba:fastjson:2.0.47'
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'dev.hachikuu.autogfncloudgg.App'
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}
+
+compileJava {
+    options.compilerArgs << "-Xlint:unchecked"
+    options.encoding = 'UTF-8'
+}
+
+// jar {
+//     manifest {
+//         attributes 'Main-Class': 'dev.hachikuu.autogfncloudgg.App'
+//     }
+// }
