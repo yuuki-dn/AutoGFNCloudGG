@@ -1,16 +1,14 @@
-GET https://my.cloud.gg/register/subscription/checkout?service_id={}
-
 ==========================
 Service ID:
 ==========================
-16: Basic 1 month
-17: Basic 6 months
+16: Basic - 1 month
+17: Basic - 6 months
 
-18: Casual 1 month
-19: Casual 6 months
+18: Casual - 1 month
+19: Casual - 6 months
 
-20: Priority 1 month
-21: Priority 6 months
+20: Priority - 1 month
+21: Priority - 6 months
 
-23: Ultra 1 month
-24: Ultra 6 months
+23: Ultra - 1 month
+24: Ultra - 6 months

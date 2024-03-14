@@ -2,7 +2,6 @@ package com.frogking.chromedriver;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,13 +38,13 @@ public class Patcher {
             }
 
         }catch (Exception e){
-            e.printStackTrace();
+            // e.printStackTrace();
         }finally {
             if(br!=null){
                 try{
                     br.close();
                 }catch (Exception e){
-                    e.printStackTrace();
+                    // e.printStackTrace();
                 }
             }
         }
@@ -55,7 +54,6 @@ public class Patcher {
     private int patchExe(){
 
         int linect = 0;
-        String replacement = genRandomCdc();
         RandomAccessFile file = null;
         try {
             file = new RandomAccessFile(_driverExecutablePath, "rw");
@@ -87,41 +85,17 @@ public class Patcher {
             }
 
         }catch (Exception e){
-            e.printStackTrace();
+            // e.printStackTrace();
         }finally {
             if(file!=null){
                 try {
                     file.close();
                 }catch (Exception e){
-                    e.printStackTrace();
+                    // e.printStackTrace();
                 }
             }
         }
         return linect;
-    }
-
-    private String genRandomCdc() {
-        String chars = "abcdefghijklmnopqrstuvwxyz";
-        Random random = new Random();
-        /*
-        char[] cdc = new char[26];
-
-        for(int i=0;i<26;i++){
-            cdc[i] = chars.charAt(random.nextInt(chars.length()));
-        }
-        for (int i = 4; i <= 6; i++) {
-            cdc[cdc.length - i] = Character.toUpperCase(cdc[cdc.length - i]);
-        }
-        cdc[2] = cdc[0];
-        cdc[3] = '_';
-        return new String(cdc);
-
-         */
-        char[] cdc = new char[27];
-        for(int i=0;i<27;i++){
-            cdc[i] = chars.charAt(random.nextInt(chars.length()));
-        }
-        return new String(cdc);
     }
 
 }

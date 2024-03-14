@@ -83,6 +83,7 @@ public class ChromeDriverBuilder {
         try {
             Field experimentalOptions = chromeOptions.getClass().getSuperclass().getDeclaredField("experimentalOptions");
             experimentalOptions.setAccessible(true);
+            @SuppressWarnings("unchecked")
             Map<String, Object> experimentals = (Map<String, Object>) experimentalOptions.get(chromeOptions);
             if(experimentals!=null && experimentals.get("debuggerAddress")!=null){
                 return chromeOptions;
@@ -493,6 +494,7 @@ public class ChromeDriverBuilder {
      * @param needPrintChromeInfo
      * @return
      */
+    @SuppressWarnings("unchecked")
     public ChromeDriver build(ChromeOptions options,
                               String driverExecutablePath,
                               String binaryLocation,
@@ -593,6 +595,7 @@ public class ChromeDriverBuilder {
      * find args in chromeOptions
      * @param chromeOptions
      */
+    @SuppressWarnings("unchecked")
     private void LoadChromeOptionsArgs(ChromeOptions chromeOptions){
         try {
             Field argsField = chromeOptions.getClass().getSuperclass().getDeclaredField("args");
@@ -607,7 +610,6 @@ public class ChromeDriverBuilder {
      * @return
      */
     private String _getChromePath() throws RuntimeException{
-        String os = System.getProperties().getProperty("os.name");
         String chromeDataPath = null;
         boolean IS_POSIX = SysUtil.isMacOs() || SysUtil.isLinux();
         Set<String> possibles = new HashSet<>();
@@ -665,6 +667,7 @@ public class ChromeDriverBuilder {
      * @param value
      * @param dict
      */
+    @SuppressWarnings("unchecked")
     private void undotMerge(String key,Object value,Map<String,Object> dict){
         if(key.contains(".")){
             String[] splits = key.split("\\.",2);

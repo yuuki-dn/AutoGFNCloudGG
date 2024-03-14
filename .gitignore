@@ -1,6 +1,9 @@
 # Ignore directories
 .vscode
 
+# Ignore files
+**/config.json
+
 # Ignore Gradle project-specific cache directory
 .gradle
 

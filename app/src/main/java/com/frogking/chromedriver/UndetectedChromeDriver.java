@@ -2,7 +2,6 @@ package com.frogking.chromedriver;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.*;
@@ -208,6 +207,7 @@ public class UndetectedChromeDriver extends ChromeDriver{
      * remove cdc
      */
     private void _cdcProps(){
+        @SuppressWarnings("unchecked")
         List<String> f = (List<String>)this.executeScript("let objectToInspect = window,\n" +
                 "    result = [];\n" +
                 "while(objectToInspect !== null)\n" +
@@ -227,28 +227,6 @@ public class UndetectedChromeDriver extends ChromeDriver{
             this.executeCdpCommand("Page.addScriptToEvaluateOnNewDocument", param);
         }
 
-    }
-
-    /**
-     *  set stealth
-     */
-    private void _stealth() {
-        StringBuilder stringBuffer = new StringBuilder();
-        BufferedReader bufferedReader = null;
-        try {
-            InputStream in = this.getClass().getResourceAsStream("/static/js/stealth.min.js");
-            bufferedReader = new BufferedReader(new InputStreamReader(in));
-            String str = null;
-            while ((str = bufferedReader.readLine()) != null) {
-                stringBuffer.append(str);
-                stringBuffer.append("\n");
-            }
-            in.close();
-            bufferedReader.close();
-        } catch (Exception ignored) { }
-        Map<String, Object> params = new HashMap<>();
-        params.put("source", stringBuffer.toString());
-        this.executeCdpCommand("Page.addScriptToEvaluateOnNewDocument", params);
     }
 
     @Override

@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 public class MailProvider {
     public static final String provider = "https://mailforspam.com";
-    public static String mailPrefix = "";
+    public String mailPrefix = "";
 
     private final RandomString randomSurfix = new RandomString();
     private static final Logger log = LoggerFactory.getLogger(MailProvider.class);
@@ -38,7 +38,8 @@ public class MailProvider {
         ).build();
 
 
-    public String currentMailUsername = "";
+    public String currentMailUsername = null;
+    public String activateLink = null;
 
     public final String currentMail() {
         return currentMailUsername.concat("@mailforspam.com");
@@ -87,7 +88,7 @@ public class MailProvider {
 
     private final String parseActivationMail(String respData) {
         Document doc = Jsoup.parse(respData);
-        Elements links = doc.select("a");
+        Elements links = doc.select("a:has(span > span > strong:containsOwn(Verify Email Address))");
         for (Element link : links) {
             String href = link.attr("href");
             if (href.contains("http://email.mail1.cloud.gg/c/")) {
@@ -122,9 +123,10 @@ public class MailProvider {
 
             if (activationMailLink == null) return null;
             String respData = request(activationMailLink);
-            return parseActivationMail(respData);
+            activateLink =  parseActivationMail(respData);
+            return activateLink;
 
-        } catch (IOException err) {
+        } catch (Exception err) {
             log.error("An IOExpection occured when sending request.", err);
             return null;
         }

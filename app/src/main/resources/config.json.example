@@ -1,0 +1,17 @@
+{
+    "instance_name": "Node 1",
+    "prefix": { 
+        "mail": "hachikuu_",
+        "username": "Hachikuu"
+    },
+    "default_password": "@Abc123#", 
+    "quantity": 1, 
+    "plan": 24,
+    "card": {
+        "card_holder": "Your Name",
+        "number": "4848484848484848",
+        "month": "08",
+        "year": "2028",
+        "cvv": "888"
+    }
+}
