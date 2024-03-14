@@ -1,7 +1,8 @@
 # Tool tự động tạo tài khoản CloudGG (Geforce NOW)
 ***- Author: Hachikuu -***
 
-> ⚠ Disclaimer: This project is only for personal learning and communication, please do not use it for illegal purposes, please do not use it in a production environment
+> ⚠ Disclaimer: This project is only for personal learning and communication, please do not use it for illegal purposes, please do not use it in a production environment.
+
 > This repository is currently in development, so the features aren't completed.
 
 ### Tính năng:
