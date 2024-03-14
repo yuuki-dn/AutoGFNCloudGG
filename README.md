@@ -25,4 +25,5 @@
     - Hỗ trợ Web Panel với Spring Boot.
     - ...
 
-## If this project is helpful to you, please give it a 🌟. Feel free to open an issue / a pull request if you want to help me!
+## If this project is helpful to you, please give it a 🌟.
+## Feel free to open an issue / a pull request if you want to help me!
