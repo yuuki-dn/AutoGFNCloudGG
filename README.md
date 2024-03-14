@@ -14,7 +14,7 @@
 ### Lưu ý:
     - Plan ID ở trong file [service-id.txt](/service-id.txt)
     - Yêu cầu tối thiểu: Java 17
-    - *Không biết xài đừng hỏi 🐧*
+    - Không biết xài đừng hỏi 🐧
 
 ### TO-DO:
     - Thêm hỗ trợ API giải captcha (thay vì giải bằng tay).
