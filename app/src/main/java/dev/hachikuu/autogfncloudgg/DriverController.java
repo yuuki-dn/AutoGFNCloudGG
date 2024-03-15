@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 import org.slf4j.*;
 
 public class DriverController {
@@ -40,7 +41,7 @@ public class DriverController {
     }
 
     public final void waitForCloudFlare() throws ControlException {
-        logger.info("Driver is waiting for CloudFlare check.");
+        logger.info("Driver is waiting for CloudFlare check. (Timeout: 120s)");
         int countdown = 120;
         while (!driver.getTitle().contains("CloudGG")) {
             if (countdown < 0) {
@@ -61,7 +62,7 @@ public class DriverController {
     }
 
     public final void waitForRedirect(String targetUrl) {
-        logger.info("Driver is waiting for redirect.");
+        logger.info("Driver is waiting for redirect. (Timeout: 120s)");
         int countdown = 120;
         while (!driver.getCurrentUrl().contains(targetUrl)) {
             if (countdown < 0) {
@@ -99,6 +100,19 @@ public class DriverController {
     public final WebElement scrollTo(String cssSelector) {
         WebElement element = driverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(cssSelector)));
         driver.executeScript("arguments[0].scrollIntoView(true);", element);
+        return element;
+    }
+
+    public final WebElement waitSelect(String cssSelector, String optionValue) {
+        WebElement element = driverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(cssSelector)));
+        new Select(element).selectByValue(optionValue);
+        return element;
+    }
+
+    public final WebElement waitClickElement(String cssSelector, int waitSeconds) {
+        WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+        WebElement element = customWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(cssSelector)));
+        driver.executeScript("arguments[0].click();", element);
         return element;
     }
 }
